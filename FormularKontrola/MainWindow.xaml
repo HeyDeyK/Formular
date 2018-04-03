@@ -7,6 +7,70 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="0*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="1.6*" />
+        </Grid.RowDefinitions>
+        <Label Content="Křestní" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" ></Label>
+        <Label Content="Příjmení" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" ></Label>
+        <Label Content="Věk" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" ></Label>
+        <TextBox BorderBrush="Black" Grid.Column="1" Grid.Row="1" Text="{Binding GetText,UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.Resources>
+                <Style TargetType="TextBox" >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WrongName}" Value="true">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WrongName}" Value="false">
+                            <Setter Property="Background" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox BorderBrush="Black" Grid.Column="1" Grid.Row="2" Text="{Binding GetSurname,UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.Resources>
+                <Style TargetType="TextBox" >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WrongSurname}" Value="true">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WrongSurname}" Value="false">
+                            <Setter Property="Background" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox BorderBrush="Black" Grid.Column="1" Grid.Row="3" Text="{Binding GetTextAge,UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.Resources>
+                <Style TargetType="TextBox" >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WrongAge}" Value="true">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WrongAge}" Value="false">
+                            <Setter Property="Background" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button Grid.Row="4" Grid.Column="2" Content="Mačkátko" Command="{Binding ClickCommand}"></Button>
+        <Label Content="{Binding ErrorForename}" Grid.Row="1" Grid.Column="2"></Label>
+        <Label Content="{Binding ErrorAge}" Grid.Row="3" Grid.Column="2"></Label>
+        <Label Content="{Binding Nevimm}" Grid.Column="1" Grid.Row="4"></Label>
     </Grid>
 </Window>
